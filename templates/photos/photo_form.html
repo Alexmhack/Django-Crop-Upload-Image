@@ -15,7 +15,19 @@
 
 {% block content %}
 
-	
+<div class="container mt-5">
+	<form method="post" enctype="multipart/form-data" id="formUpload">
+  		{% csrf_token %}
+  		{{ form.as_p }}
+  		<button type="submit">Save</button>
+	</form>
+
+	<br><br>
+	{% for photo in photos %}
+		{{ photo.title }}<br>
+		<a href="{{ photo.image.url }}">Image</a><br><br>
+	{% endfor %}
+</div>
 
 {% endblock %}
 
@@ -24,4 +36,4 @@
 	<script src="{% static 'js/cropper.js' %}"></script><!-- Cropper.js is required -->
     <script src="{% static 'js/jquery-cropper.js' %}"></script>
 
-{% enblock %}
+{% endblock %}
