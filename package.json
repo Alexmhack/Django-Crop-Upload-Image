@@ -1,0 +1,33 @@
+{
+  "name": "django-crop-upload-image",
+  "version": "1.0.0",
+  "description": "frontend for cropping, showing image preview and uploading it to django backend",
+  "main": "y",
+  "dependencies": {
+    "cropperjs": "^1.4.3",
+    "jquery": "^3.3.1",
+    "jquery-cropper": "^1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alexmhack/Django-Crop-Upload-Image.git"
+  },
+  "keywords": [
+    "cropperjs",
+    "jquery-cropper",
+    "django",
+    "frontend",
+    "backend",
+    "web-application"
+  ],
+  "author": "Alexmhack",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alexmhack/Django-Crop-Upload-Image/issues"
+  },
+  "homepage": "https://github.com/Alexmhack/Django-Crop-Upload-Image#readme"
+}
