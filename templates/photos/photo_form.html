@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+
+	<link  href="{% static 'css/cropper.css' %}" rel="stylesheet">
+
+{% endblock %}
+
+{% block title %}
+
+	Upload Photo
+
+{% endblock %}
+
+{% block content %}
+
+	
+
+{% endblock %}
+
+{% block scripts %}
+
+	<script src="{% static 'js/cropper.js' %}"></script><!-- Cropper.js is required -->
+    <script src="{% static 'js/jquery-cropper.js' %}"></script>
+
+{% enblock %}
