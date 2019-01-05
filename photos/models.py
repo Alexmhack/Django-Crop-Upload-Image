@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 class Photo(models.Model):
 	title = models.CharField(max_length=144)
@@ -14,3 +15,6 @@ class Photo(models.Model):
 
 	def __str__(self):
 		return str(self.title)
+
+	def get_absolute_url(self):
+		return reverse("photos:detail")
