@@ -27,7 +27,7 @@
 
 	{# cropping frontend code #}
 	{% thumbnail Photo.image 250x250 box=Photo.cropping crop detail %}
-	<img src="{% cropped_thumbnail yourmodel "cropping" scale=0.5 %}">
+	<img src="{% cropped_thumbnail Photo "cropping" scale=0.5 %}">
 
 	<!-- MODAL TO CROP THE IMAGE -->
 	<!-- <div class="modal fade" id="modalCrop">
