@@ -1,6 +1,8 @@
 from django.db import models
 from django.urls import reverse
 
+from image_cropping import ImageRatioField
+
 class Photo(models.Model):
 	title = models.CharField(max_length=144)
 	image = models.ImageField(
@@ -8,6 +10,7 @@ class Photo(models.Model):
 		height_field='image_heigth',
 		width_field='image_width'
 	)
+	cropping = ImageRatioField('image', '250x250')
 	image_heigth = models.IntegerField()
 	image_width = models.IntegerField()
 	timestamp = models.DateTimeField(auto_now_add=True)
