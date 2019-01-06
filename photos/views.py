@@ -19,5 +19,8 @@ class PhotoView(View):
 		form = PhotoForm(request.POST, request.FILES)
 		if form.is_valid():
 			form.save()
-			# display a success message
+			messages.success(request, "Image has been saved")
+			return redirect('photos')
+		else:
+			messages.error(request, "Correct the following errors")
 			return redirect('photos')
