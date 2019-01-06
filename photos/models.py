@@ -1,14 +1,14 @@
 from django.db import models
 from django.urls import reverse
 
-from image_cropping import ImageRatioField
+from image_cropping import ImageRatioField, ImageCropField
 
 class Photo(models.Model):
 	title = models.CharField(max_length=144)
-	image = models.ImageField(
+	image = ImageCropField(
 		upload_to='%Y/%m/%d/',
-		height_field='image_heigth',
-		width_field='image_width'
+		# height_field='image_heigth',
+		# width_field='image_width'
 	)
 	cropping = ImageRatioField('image', '250x250')
 	image_heigth = models.IntegerField()
