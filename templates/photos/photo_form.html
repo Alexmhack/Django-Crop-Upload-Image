@@ -4,6 +4,12 @@
 {% block styles %}
 
 	<link  href="{% static 'css/cropper.min.css' %}" rel="stylesheet">
+	<style type="text/css" media="screen">
+		/* Limit image width to avoid overflow the container */
+		img {
+		  max-width: 100%; /* This rule is very important, please do not ignore this! */
+		}
+	</style>
 
 {% endblock %}
 
@@ -55,7 +61,9 @@
 	<div class="row mt-4">
 	  {% for photo in photos %}
 	    <div class="col-sm-4 col-md-3">
-	      <img src="{{ photo.image.url }}" width="250" height="250" class="thumbnail">
+	    <a href="{{ photo.image.url }}" title="{{ photo.image }}">
+	      	<img src="{{ photo.image.url }}" width="250" height="250" class="thumbnail">
+	    </a>
 	    </div>
 	  {% endfor %}
 	</div>
