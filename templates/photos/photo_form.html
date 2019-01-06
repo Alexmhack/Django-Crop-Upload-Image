@@ -1,9 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
+{% load thumbnail %}
+{% load cropping %}
 
 {% block styles %}
 
 	<link  href="{% static 'css/cropper.min.css' %}" rel="stylesheet">
+	{{ form.media }}
 
 {% endblock %}
 
@@ -19,11 +22,15 @@
 	<form method="post" enctype="multipart/form-data" id="formUpload">
   		{% csrf_token %}
   		{{ form.as_p }}
-  		<button type="submit" id="formUploadButton" style="display: none;">Save</button>
+  		<button type="submit" id="formUploadButton" style="">Save</button>
 	</form>
 
+	{# cropping frontend code #}
+	{% thumbnail Photo.image 250x250 box=Photo.cropping crop detail %}
+	<img src="{% cropped_thumbnail yourmodel "cropping" scale=0.5 %}">
+
 	<!-- MODAL TO CROP THE IMAGE -->
-	<div class="modal fade" id="modalCrop">
+	<!-- <div class="modal fade" id="modalCrop">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
 	      <div class="modal-header">
@@ -49,16 +56,16 @@
 	      </div>
 	    </div>
 	  </div>
-	</div>
+	</div> -->
 
 	<!-- CONTAINER TO DISPLAY THE CROPPED IMAGES -->
-	<div class="row mt-4">
+	<!-- <div class="row mt-4">
 	  {% for photo in photos %}
 	    <div class="col-sm-4 col-md-3">
 	      <img src="{{ photo.image.url }}" class="thumbnail">
 	    </div>
 	  {% endfor %}
-	</div>
+	</div> -->
 
 <!-- container ends here -->
 </div>
