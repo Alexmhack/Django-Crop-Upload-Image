@@ -29,8 +29,7 @@ class PhotoForm(forms.ModelForm):
 		cropped_image = image.crop((x, y, w + x, h + y))
 		resized_image = cropped_image.resize((200, 200), Image.ANTIALIAS)
 		thumb_io = BytesIO()
-		resized_image.thumbnail((200, 200), Image.ANTIALIAS)
-		resized_image.save(thumb_io, resized_image.format, quality=60)
-		photo.save(resized_image.filename, ContentFile(thumb_io.get_value()))
+		# resized_image.save(thumb_io, format=resized_image.format, quality=60)
+		photo.save(resized_image.filename, ContentFile(resized_image), commit=False)
 
 		return super(PhotoForm, self).save(commit=True)
