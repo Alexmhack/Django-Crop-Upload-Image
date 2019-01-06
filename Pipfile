@@ -9,6 +9,7 @@ verify_ssl = true
 django = "*"
 pillow = "*"
 django-image-cropping = "*"
+easy-thumbnails = "*"
 
 [requires]
 python_version = "3.6"
