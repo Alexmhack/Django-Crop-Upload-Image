@@ -1,6 +1,9 @@
-from PIL import Image
 from django import forms
 from django.core.files import File
+from django.core.files.base import ContentFile
+
+from PIL import Image
+from io import BytesIO
 
 from .models import Photo
 
@@ -25,6 +28,8 @@ class PhotoForm(forms.ModelForm):
 		image = Image.open(photo.image)
 		cropped_image = image.crop((x, y, w + x, h + y))
 		resized_image = cropped_image.resize((200, 200), Image.ANTIALIAS)
-		resized_image.save(photo.image.path)
+		thumb_io = BytesIO()
+		resized_image.save(thumb_io, resized_image.format, quality=60)
+		photo.save(resized_image.filename, ContentFile(thumb_io.get_value()))
 
 		return super(PhotoForm, self).save(commit=True)
