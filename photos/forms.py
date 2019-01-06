@@ -17,7 +17,7 @@ class PhotoForm(forms.ModelForm):
 		model = Photo
 		fields = ('title', 'image', 'x', 'y', 'image_height', 'image_width')
 
-	def save(self):
+	def save(self, *args, **kwargs):
 		photo = super(PhotoForm, self).save(commit=False)
 
 		x = self.cleaned_data.get('x')
@@ -29,7 +29,8 @@ class PhotoForm(forms.ModelForm):
 		cropped_image = image.crop((x, y, w + x, h + y))
 		resized_image = cropped_image.resize((200, 200), Image.ANTIALIAS)
 		thumb_io = BytesIO()
-		# resized_image.save(thumb_io, format=resized_image.format, quality=60)
-		photo.save(resized_image.filename, ContentFile(resized_image), commit=False)
+		print(resized_image.format)
+		resized_image.save(thumb_io, format=image.format)
+		photo.save(image.filename, ContentFile(thumb_io.getvalue(), f'{image.filename}'))
 
-		return super(PhotoForm, self).save(commit=True)
+		return super(PhotoForm, self).save(*args, **kwargs)
