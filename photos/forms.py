@@ -2,6 +2,8 @@ from PIL import Image
 from django import forms
 from django.core.files import File
 
+from image_cropping import ImageCropWidget
+
 from .models import Photo
 
 class PhotoForm(forms.ModelForm):
@@ -12,6 +14,9 @@ class PhotoForm(forms.ModelForm):
 
 	class Meta:
 		model = Photo
+		# widgets = {
+		# 	'image': ImageCropWidget
+		# }
 		fields = ('title', 'image', 'x', 'y', 'height', 'width')
 
 	def save(self):
