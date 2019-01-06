@@ -7,20 +7,20 @@ from .models import Photo
 class PhotoForm(forms.ModelForm):
 	x = forms.FloatField(widget=forms.HiddenInput())
 	y = forms.FloatField(widget=forms.HiddenInput())
-	width = forms.FloatField(widget=forms.HiddenInput())
-	height = forms.FloatField(widget=forms.HiddenInput())
+	image_width = forms.FloatField(widget=forms.HiddenInput())
+	image_heigth = forms.FloatField(widget=forms.HiddenInput())
 
 	class Meta:
 		model = Photo
-		fields = ('title', 'image', 'x', 'y', 'height', 'width')
+		fields = ('title', 'image', 'x', 'y', 'image_heigth', 'image_width')
 
 	def save(self):
 		photo = super(PhotoForm, self).save(commit=False)
 
 		x = self.cleaned_data.get('x')
 		y = self.cleaned_data.get('y')
-		w = self.cleaned_data.get('width')
-		h = self.cleaned_data.get('height')
+		w = self.cleaned_data.get('image_width')
+		h = self.cleaned_data.get('image_width')
 
 		image = Image.open(photo.image)
 		cropped_image = image.crop((x, y, w + x, h + y))
