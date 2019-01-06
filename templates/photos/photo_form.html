@@ -75,7 +75,7 @@
     $(function(){
 
     	/* SCRIPT TO OPEN THE MODAL WITH THE PREVIEW */
-		$("#id_image").change(function () {
+		$("#id_image").change(function (e) {
 		  if (this.files && this.files[0]) {
 		    var reader = new FileReader();
 		    reader.onload = function (e) {
