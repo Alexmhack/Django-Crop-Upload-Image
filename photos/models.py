@@ -8,8 +8,8 @@ class Photo(models.Model):
 		height_field='image_heigth',
 		width_field='image_width'
 	)
-	image_heigth = models.IntegerField()
-	image_width = models.IntegerField()
+	image_heigth = models.FloatField()
+	image_width = models.FloatField()
 	timestamp = models.DateTimeField(auto_now_add=True)
 	updated = models.DateTimeField(auto_now=True)
 
