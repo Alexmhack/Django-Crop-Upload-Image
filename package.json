@@ -5,7 +5,7 @@
   "main": "y",
   "dependencies": {
     "cropperjs": "^1.4.3",
-    "jquery": "^3.3.1",
+    "jquery": "^3.4.0",
     "jquery-cropper": "^1.0.0"
   },
   "devDependencies": {},
